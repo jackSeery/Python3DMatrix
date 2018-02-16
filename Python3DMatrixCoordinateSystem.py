@@ -20,7 +20,7 @@ window.fill((255,255,255))
 def printNoLn(string):
     return print('%s'%string, sep = '', end = ',', file = sys.stdout)
 
-#define printMstrix method, used to iterate through entire 3D matrix and print all values to console
+#define printMatrix method, used to iterate through entire 3D matrix and print all values to console
 def printMatrix(matrix):
     for dep in range(len(matrix)):
         for row in range(len(matrix[0])):
