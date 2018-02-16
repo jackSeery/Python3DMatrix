@@ -1,3 +1,6 @@
+"""
+Base code for the 3D Matrix Coordinate experiment
+"""
 #Python 3D Positioning Test System
 #uses a 3D matrix to create a three-axis coordinate system, which can be moved around using keyboard input
 

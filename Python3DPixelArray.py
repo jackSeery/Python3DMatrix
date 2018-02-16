@@ -1,5 +1,6 @@
 """
-MatrixCoordinates
+MatrixCoordinates with Pixels
+Testing 3D coordinates and trying to test displaying pixels
 """
 #Python 3D Positioning Test System
 #uses a 3D matrix to create a three-axis coordinate system, which can be moved around using keyboard input
@@ -66,9 +67,17 @@ def main():
                     if dispY > 0:
                         dispY -= 1
                     printNoLn(displayMatrix[dispZ][dispY][dispX])
+                if event.key == pygame.K_PAGEDOWN:
+                    if dispZ < (l-1):
+                        dispZ += 1
+                    printNoLn(displayMatrix[dispZ][dispY][dispX])
+                if event.key == pygame.K_PAGEUP:
+                    if dispZ > 0:
+                        dispZ -= 1
+                    printNoLn(displayMatrix[dispZ][dispY][dispX])
         
         clock.tick(60)
-        pygame.display.flip()
+        pygame.display.update()
     pygame.quit()
 
 #execute main method
