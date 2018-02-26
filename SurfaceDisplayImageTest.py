@@ -19,9 +19,12 @@ def main():
     clock = pygame.time.Clock()
     displayWidth = 160
     displayHeight = 90
+    
+    #creates a Surface object named screen with width and height parameters
     screen = pygame.display.set_mode((displayWidth, displayHeight))
 
-    #creates an array that represents the PixelArray wrapping the screen Surface, and prints the Screen that PixelArray is wrapping (which is screen)
+    #creates an array that represents the PixelArray wrapping the screen Surface, 
+    #prints the Surface that PixelArray is wrapping (which is screen)
     #not a lot of progress towards displaying an image, but I'm beginning to understand how everything fits together with these objects and classes 
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
