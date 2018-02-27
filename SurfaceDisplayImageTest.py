@@ -11,7 +11,7 @@ pygame.init()
 def printNoLn(string):
     return print('%s'%string, sep = '', end = ',')
 
-#define randomColor method, returns (you guessed it!) a random RGB tuple
+#define randomColor method, returns (you guessed it!) a random RGB triple
 def randomColor():
     return (random.randint(0, 255), random.randint(0,255), random.randint(0, 255))
 
