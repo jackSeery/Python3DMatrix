@@ -20,25 +20,32 @@ def main():
     displayWidth = 160
     displayHeight = 90
     
-    #creates a Surface object named screen with width and height parameters
+    #creates a Surface object named screen with width and height parameters, defaults to black
     screen = pygame.display.set_mode((displayWidth, displayHeight))
-
+    
+    #set a single pixel at (80, 45) to color (255, 255, 255) a.k.a. white
+    screen.set_at((80, 45), (255, 255, 255))
+    
     #creates an array that represents the PixelArray wrapping the screen Surface, 
     #prints the Surface that PixelArray is wrapping (which is screen)
     #not a lot of progress towards displaying an image, but I'm beginning to understand how everything fits together with these objects and classes 
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
-    print("test")
+    #prints the dimensions of the screenArray
+    print(screenArray.shape)
+    
+    
+    #create a Surface object directly using pygame.Surface()
+    screenTest = pygame.Surface(displayHeight, displayWidth)
 
     repeat = True
     while repeat:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 repeat = False
-
-
-
-    clock.tick(60)
+    
+        pygame.display.update()
+        clock.tick(60)
     pygame.quit()
 
 main()
