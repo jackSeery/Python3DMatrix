@@ -28,6 +28,7 @@ def main():
     #not a lot of progress towards displaying an image, but I'm beginning to understand how everything fits together with these objects and classes 
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
+    print("Test")
 
     repeat = True
     while repeat:
