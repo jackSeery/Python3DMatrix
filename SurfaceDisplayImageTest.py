@@ -29,7 +29,6 @@ def main():
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
 
-
     repeat = True
     while repeat:
         for event in pygame.event.get():
