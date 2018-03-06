@@ -20,7 +20,7 @@ def main():
     displayWidth = 160
     displayHeight = 90
     
-    #creates a Surface object named screen with width and height parameters, defaults to black
+    #creates a display Surface object named screen with width and height parameters, defaults to black
     screen = pygame.display.set_mode((displayWidth, displayHeight))
     
     #set a single pixel at (80, 45) to color (255, 255, 255) a.k.a. white
