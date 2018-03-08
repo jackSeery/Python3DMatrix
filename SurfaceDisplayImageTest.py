@@ -17,16 +17,18 @@ def randomColor():
 
 def main():
     clock = pygame.time.Clock()
-    displayWidth = 160
-    displayHeight = 90
+    displayWidth = 800
+    displayHeight = 450
     
     #creates a display Surface object named screen with width and height parameters, defaults to black
     screen = pygame.display.set_mode((displayWidth, displayHeight))
     
-    print(screen.get_at(80,45))
+    print(screen.get_at((80,45)))
     #set a single pixel at (80, 45) to color (255, 255, 255) a.k.a. white
     screen.set_at((80, 45), (255, 255, 255))
-    print(screen.get_at(80, 45))
+    print(screen.get_at((80, 45)))
+
+
     
     #creates an array that represents the PixelArray wrapping the screen Surface, 
     #prints the Surface that PixelArray is wrapping (which is screen)
@@ -38,16 +40,23 @@ def main():
     
     
     #create a Surface object directly using pygame.Surface()
-    screenTest = pygame.Surface(displayHeight, displayWidth)
+    screenTest = pygame.Surface((displayWidth / 2, displayHeight / 2))
+    screenTest.fill((0, 255, 100))
 
     repeat = True
     while repeat:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 repeat = False
-    
+
+        #fills screen with randomly colored pixels, VERY SLOWLY (approx. 0.001 fps)
+        for i in range(0, displayHeight):
+            for j in range(0, displayWidth):
+                screen.set_at((j, i), randomColor())
+
         pygame.display.update()
         clock.tick(60)
+
     pygame.quit()
 
 main()
