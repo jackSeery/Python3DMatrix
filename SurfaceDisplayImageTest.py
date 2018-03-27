@@ -42,17 +42,23 @@ def main():
     #create a Surface object directly using pygame.Surface()
     screenTest = pygame.Surface((displayWidth / 2, displayHeight / 2))
     screenTest.fill((0, 255, 100))
-
+    
+    for array in range(5):
+    #fills screen with randomly colored pixels, VERY SLOWLY (approx. 0.001 fps)
+        for i in range(0, displayHeight):
+            for j in range(0, displayWidth):
+                array[i].append(randomColor())
+            array.append([])
+    
     repeat = True
     while repeat:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 repeat = False
-
-        #fills screen with randomly colored pixels, VERY SLOWLY (approx. 0.001 fps)
-        for i in range(0, displayHeight):
-            for j in range(0, displayWidth):
-                screen.set_at((j, i), randomColor())
+            if event.type == pygame.KEYDOWN:
+                if pygame.key.get_pressed(K_SPACE):
+                    #iterate through list of pixel arrays, set screen to each pixel array
+                    pygame.surfarray.blit_array(screen, array)
 
         pygame.display.update()
         clock.tick(60)
