@@ -40,12 +40,15 @@ def main():
     screenTest = pygame.Surface((displayWidth / 2, displayHeight / 2))
     screenTest.fill((0, 255, 100))
     
-    for array in range(5):
+    array3D = []
+    for i in range(5):
     #fills screen with randomly colored pixels, VERY SLOWLY (approx. 0.001 fps)
-        for i in range(0, displayHeight):
-            for j in range(0, displayWidth):
-                array[i].append(randomColor())
-            array.append([])
+        for j in range(0, displayHeight):
+            for k in range(0, displayWidth):
+                array3D[i][j].append(randomColor())
+            array3D[i].append([])
+        array3D.append([])
+    array3D.remove([])
     
     repeat = True
     while repeat:
