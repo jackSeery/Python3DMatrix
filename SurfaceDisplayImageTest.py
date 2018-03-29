@@ -27,12 +27,9 @@ def main():
     #set a single pixel at (80, 45) to color (255, 255, 255) a.k.a. white
     screen.set_at((80, 45), (255, 255, 255))
     print(screen.get_at((80, 45)))
-
-
     
     #creates an array that represents the PixelArray wrapping the screen Surface, 
-    #prints the Surface that PixelArray is wrapping (which is screen)
-    #not a lot of progress towards displaying an image, but I'm beginning to understand how everything fits together with these objects and classes 
+    #prints the Surface that PixelArray is wrapping (which is screen) 
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
     #prints the dimensions of the screenArray
