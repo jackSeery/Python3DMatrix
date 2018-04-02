@@ -7,6 +7,8 @@ import pygame
 
 pygame.init()
 
+#test again
+
 #define printNoLn method, very handy method that prints to console without adding '\n' to the end of each line
 def printNoLn(string):
     return print('%s'%string, sep = '', end = ',')
