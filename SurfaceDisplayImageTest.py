@@ -35,8 +35,6 @@ def main():
     #prints the dimensions of the screenArray
     print(screenArray.shape)
     
-    #test other branch
-    
     #create a Surface object directly using pygame.Surface()
     screenTest = pygame.Surface((displayWidth / 2, displayHeight / 2))
     screenTest.fill((0, 255, 100))
