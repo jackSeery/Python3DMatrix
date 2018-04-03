@@ -9,8 +9,6 @@ Testing 3D coordinates and trying to test displaying pixels
 import pygame
 #random is just used for testing 3D matrix coordinates and position movement, can be replaced with any display output
 import random
-#sys is just used to make the printNoLn method print to console, this parameter probably isn't even necessary but whatever 
-import sys
 
 #some pygame initialization stuff, pretty useless for anything besides user input
 pygame.init()
@@ -18,7 +16,7 @@ clock = pygame.time.Clock()
 
 #define printNoLn method, very handy method that prints to console without adding '\n' to the end of each line
 def printNoLn(string):
-    return print(string, sep = '', end = ',', file = sys.stdout)
+    return print(string, sep = '', end = ',')
 
 #define randomColor method, returns (you guessed it!) a random RGB tuple
 def randomColor():

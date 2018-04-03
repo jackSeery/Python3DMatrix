@@ -8,8 +8,6 @@ Base code for the 3D Matrix Coordinate experiment
 import pygame
 #random is just used for testing 3D matrix coordinates and position movement, can be replaced with any display output
 import random
-#sys is just used to make the printNoLn method print to console, this parameter probably isn't even necessary but whatever 
-import sys
 
 #some pygame initialization stuff, pretty useless for anything besides user input
 pygame.init()
@@ -21,7 +19,7 @@ window.fill((255,255,255))
 
 #define printNoLn method, very handy method that prints to console without adding '\n' to the end of each line
 def printNoLn(string):
-    return print('%s'%string, sep = '', end = ',', file = sys.stdout)
+    return print('%s'%string, sep = '', end = ',')
 
 #define printMatrix method, used to iterate through entire 3D matrix and print all values to console
 def printMatrix(matrix):
