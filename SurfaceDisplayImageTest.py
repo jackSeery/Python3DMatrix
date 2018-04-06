@@ -27,8 +27,6 @@ def main():
     #set a single pixel at (80, 45) to color (255, 255, 255) a.k.a. white
     screen.set_at((80, 45), (255, 255, 255))
     print(screen.get_at((80, 45)))
-
-    #test
     
     #creates an array that represents the PixelArray wrapping the screen Surface, 
     #prints the Surface that PixelArray is wrapping (which is screen)
