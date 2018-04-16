@@ -4,7 +4,6 @@ A test module for experimenting with display, Surface, image, and PixelArray
 
 import random
 import pygame
-import numpy
 
 pygame.init()
 
@@ -16,10 +15,18 @@ def printNoLn(string):
 def randomColor():
     return (random.randint(0, 255), random.randint(0,255), random.randint(0, 255))
 
+#define screenDisplay method
+def screenDisplay(height, width, screen, inputArray):
+    for i in range(0, height):
+        for j in range(0, width):
+            screen.set_at((j, i), inputArray[i][j])
+
 def main():
     clock = pygame.time.Clock()
     displayWidth = 160
     displayHeight = 90
+    length = 5
+    layer = 0
     
     #creates a display Surface object named screen with width and height parameters, defaults to black
     screen = pygame.display.set_mode((displayWidth, displayHeight))
@@ -41,13 +48,11 @@ def main():
     screenTest.fill((0, 255, 100))
     
     #attempt to use numpy and pygame.surfarray to create and blit an array of random pixels to a Surface
-    #get rid of this, change it back to Surface.set_at((x, y), Color)
-    #screw this, surfarray is too complex for this program
     x = 1
     y = 1
     z = 1
     array3D = [[[]]]
-    for i in range(0, 5):
+    for i in range(0, length):
         for j in range(0, displayHeight):
             for k in range(0, displayWidth):
                 print ("Added pixel ||| layer: " + str(z) + " ||| height: " + str(y) + " ||| width: " + str(x))
@@ -60,24 +65,26 @@ def main():
         y = 1
         x = 1
         array3D.append([[]])
-    array3D = numpy.array(array3D)
-    layer = 0
-    pygame.surfarray.blit_array(screen, array3D[layer])
 
+    screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
     repeat = True
     while repeat:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 repeat = False
-            if event.type == pygame.KEYDOWN:
-                if pygame.key.get_pressed(K_UP) and layer < 5:
-                    layer += 1
-                    #iterate through list of pixel arrays, set screen to each pixel array
-                    pygame.surfarray.blit_array(screen, array3D[layer])
-                if pygame.key.get_pressed(K_DOWN) and layer > 0:
-                    layer -= 1
-                    #iterate through list of pixel arrays, set screen to each pixel array
-                    pygame.surfarray.blit_array(screen, array3D[layer])
+        string = input("Enter a direction: ")
+        if string == "up" and layer < (length - 1):
+            layer += 1
+            print("Moving up one layer")
+            #iterate through list of pixel arrays, set screen to each pixel array
+            screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
+        elif string == "down" and layer > 0:
+            layer -= 1
+            print("Moving down one layer")
+            #iterate through list of pixel arrays, set screen to each pixel array
+            screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
+        elif string == "quit":
+            repeat = False
 
         pygame.display.update()
         clock.tick(60)
