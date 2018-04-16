@@ -11,14 +11,22 @@ pygame.init()
 def printNoLn(string):
     return print('%s'%string, sep = '', end = ',')
 
-#define randomColor method, returns (you guessed it!) a random RGB triple
+#define randomColor method, returns a random RGB triple
 def randomColor():
     return (random.randint(0, 255), random.randint(0,255), random.randint(0, 255))
 
+#define screenDisplay method
+def screenDisplay(height, width, screen, inputArray):
+    for i in range(0, height):
+        for j in range(0, width):
+            screen.set_at((j, i), inputArray[i][j])
+
 def main():
     clock = pygame.time.Clock()
-    displayWidth = 800
-    displayHeight = 450
+    displayWidth = 160
+    displayHeight = 90
+    length = 5
+    layer = 0
     
     #creates a display Surface object named screen with width and height parameters, defaults to black
     screen = pygame.display.set_mode((displayWidth, displayHeight))
@@ -29,28 +37,56 @@ def main():
     print(screen.get_at((80, 45)))
     
     #creates an array that represents the PixelArray wrapping the screen Surface, 
-    #prints the Surface that PixelArray is wrapping (which is screen)
-    #not a lot of progress towards displaying an image, but I'm beginning to understand how everything fits together with these objects and classes 
+    #prints the Surface that PixelArray is wrapping (which is screen) 
     screenArray = pygame.PixelArray(screen)
     print(screenArray.surface)
     #prints the dimensions of the screenArray
     print(screenArray.shape)
     
-    
     #create a Surface object directly using pygame.Surface()
     screenTest = pygame.Surface((displayWidth / 2, displayHeight / 2))
     screenTest.fill((0, 255, 100))
-
+    
+    #generating a 3D array of colors while displaying the location of each pixel where it is generated
+    x = 1
+    y = 1
+    z = 1
+    array3D = [[[]]]
+    for i in range(0, length):
+        for j in range(0, displayHeight):
+            for k in range(0, displayWidth):
+                print ("Added pixel ||| layer: " + str(z) + " ||| height: " + str(y) + " ||| width: " + str(x))
+                x += 1
+                array3D[i][j].append(randomColor())
+            y += 1
+            x = 1
+            array3D[i].append([])
+        z += 1
+        y = 1
+        x = 1
+        array3D.append([[]])
+    
+    #uses the screenDisplay method to display the array to the screen
+    #allows the user to use keyboard input to move between layers of the array
+    screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
     repeat = True
     while repeat:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 repeat = False
-
-        #fills screen with randomly colored pixels, VERY SLOWLY (approx. 0.001 fps)
-        for i in range(0, displayHeight):
-            for j in range(0, displayWidth):
-                screen.set_at((j, i), randomColor())
+        string = input("Enter a direction: ")
+        if string == "up" and layer < (length - 1):
+            layer += 1
+            print("Moving up one layer")
+            #iterate through list of pixel arrays, set screen to each pixel array
+            screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
+        elif string == "down" and layer > 0:
+            layer -= 1
+            print("Moving down one layer")
+            #iterate through list of pixel arrays, set screen to each pixel array
+            screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
+        elif string == "quit":
+            repeat = False
 
         pygame.display.update()
         clock.tick(60)
