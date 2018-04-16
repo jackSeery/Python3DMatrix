@@ -75,15 +75,14 @@ def main():
             if event.type == pygame.QUIT:
                 repeat = False
         string = input("Enter a direction: ")
+        #conditional for moving layers
         if string == "up" and layer < (length - 1):
             layer += 1
             print("Moving up one layer")
-            #iterate through list of pixel arrays, set screen to each pixel array
             screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
         elif string == "down" and layer > 0:
             layer -= 1
             print("Moving down one layer")
-            #iterate through list of pixel arrays, set screen to each pixel array
             screenDisplay(displayHeight, displayWidth, screen, array3D[layer])
         elif string == "quit":
             repeat = False
